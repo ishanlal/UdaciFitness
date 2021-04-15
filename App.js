@@ -8,7 +8,7 @@ import reducer from './reducers'
 export default class App extends React.Component {
   render () {
     return (
-      <Provider store={createStore}>
+      <Provider store={createStore(reducer)}>
         <View>
           <AddEntry />
         </View>
