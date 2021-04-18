@@ -3345,7 +3345,7 @@ depd@~1.1.2:
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
 
-deprecated-react-native-listview@0.0.6:
+deprecated-react-native-listview@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/deprecated-react-native-listview/-/deprecated-react-native-listview-0.0.6.tgz#f9169dd703398a7792e5bcb8b851e741a8cb6980"
   integrity sha512-QRuN0Dcv3Muu1oT8MhZgyfqm77bTAegVwqSRJKVwVVsm0xJE0TBfqdD45VXYLIS+yMXPJoeXdSqSdVQSjwlOpQ==
@@ -7993,12 +7993,13 @@ ua-parser-js@^0.7.18:
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
   integrity sha512-6Gurc1n//gjp9eQNXjD9O3M/sMwVtN5S8Lv9bvOYBfKfDNiIIhqiyi01vMBO45u4zkDE420w/e0se7Vs+sIg+g==
 
-udacifitness-calendar@ftrevo/react-native-calendars#master:
-  version "10.0.0"
-  resolved "https://codeload.github.com/ftrevo/react-native-calendars/tar.gz/28bcd0da3591bd3da0580e8b9c3752897a33c81b"
+udacifitness-calendar-fix@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/udacifitness-calendar-fix/-/udacifitness-calendar-fix-10.1.0.tgz#7bf393cfc38b71cbb978597307d1cf0979b04d74"
+  integrity sha512-zJd5AHEyPo+5Gabxj7HGwnd9yAU9qElspYC6lGu/GJIVL/XD5wjvmH/3WxfSCx4wQk9xdIseooGbcZDLPwWHUg==
   dependencies:
-    deprecated-react-native-listview "0.0.6"
-    prop-types "^15.5.10"
+    deprecated-react-native-listview "^0.0.6"
+    prop-types "^15.7.2"
     xdate "^0.8.0"
 
 uglify-es@^3.1.9:
