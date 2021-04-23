@@ -4,15 +4,20 @@ import { connect } from 'react-redux'
 import { receiveEntries, addEntry } from '../actions'
 import { timeToString, getDailyReminderValue } from '../utils/helpers'
 import { fetchCalendarResults } from '../utils/api'
-import { UdaciFitnessCalendar } from 'udacifitness-calendar-fix'
+import { Agenda as UdaciFitnessCalendar } from 'react-native-calendars'
 import {white} from '../utils/colors'
-import DateHeader from './DateHeader'
+//import DateHeader from './DateHeader'
 import MetricCard from './MetricCard'
+//import { AppLoading } from 'expo'
 import { AppLoading } from 'expo'
 
 class History extends Component {
+  /*state = {
+    ready: false,
+  }*/
   state = {
     ready: false,
+    selectedDate: new Date().toISOString().slice(0,10)
   }
   componentDidMount() {
     const { dispatch } = this.props
@@ -30,44 +35,61 @@ class History extends Component {
       ready: true
     })))
   }
-  renderItem = ({today, ...metrics}, formattedDate, key) => (
+  //renderItem = ({today, ...metrics}, formattedDate, key) => (
+  renderItem = (dateKey, {today, ...metrics}, firstItemInDay) => (
     <View style={styles.item}>
       {today
         ? <View>
-            <DateHeader date={formattedDate}/>
+            //<DateHeader date={formattedDate}/>
             <Text style={styles.noDataText}>
               {today}
             </Text>
           </View>
         : <TouchableOpacity onPress={() => console.log('Pressed!')}>
-            <MetricCard metrics={metrics} date={formattedDate} />
+            //<MetricCard metrics={metrics} date={formattedDate} />
+            <MetricCard metrics={metrics} />
           </TouchableOpacity>}
     </View>
   )
-  renderEmptyDate(formattedDate) {
+  //renderEmptyDate(formattedDate) {
+  renderEmptyDate() {
     return (
       <View style={styles.item}>
-        <DateHeader date={formattedDate} />
+        //<DateHeader date={formattedDate} />
         <Text style={styles.noDataText}>
           You didn't log any data on this day.
         </Text>
       </View>
     )
   }
+
+  onDayPress = (day) => {
+          this.setState({
+              selectedDate: day.dateString
+          })
+      };
+
     render() {
-      const { entries } = this.props
-      const { ready } = this.state
+      const { entries } = this.props;
+      //const { ready } = this.state
+      const { ready, selectedDate } = this.state;
 
       if (ready === false) {
         return <AppLoading />
       }
 
       return (
-          <UdaciFitnessCalendar
+          {/*<UdaciFitnessCalendar
             items={entries}
             renderItem={this.renderItem}
             renderEmptyDate={this.renderEmptyDate}
-           />
+           />*/}
+           <UdaciFitnessCalendar
+              items={entries}
+              onDayPress={this.onDayPress}
+              renderItem={(item, firstItemInDay) => this.renderItem(selectedDate, item, firstItemInDay)}
+              renderEmptyDate={this.renderEmptyDate}
+                  />
       )
     }
 }
@@ -98,8 +120,8 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (entries) {
   return {
-    entries
+    entries,
   }
 }
 
-export default connect(mapStateToProps,)(History)
+export default connect(mapStateToProps)(History);

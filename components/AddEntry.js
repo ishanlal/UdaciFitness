@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Platform, StyleSheet } from 'react-native
 import { getMetricMetaInfo, timeToString, getDailyReminderValue } from '../utils/helpers'
 import UdaciSlider from './UdaciSlider'
 import UdaciSteppers from './UdaciSteppers'
-import DateHeader from './DateHeader'
+//import DateHeader from './DateHeader'
 import { Ionicons } from '@expo/vector-icons'
 import TextButton from './TextButton'
 import { submitEntry, removeEntry } from '../utils/api'
@@ -30,10 +30,10 @@ class AddEntry extends Component {
     eat: 0,
   }
   increment = (metric) => {
-    const { max, step } = getMetricMetaInfo(metric)
+    const { max, step } = getMetricMetaInfo(metric);
 
     this.setState((state) => {
-      const count = state[metric] + step
+      const count = state[metric] + step;
 
       return {
         ...state,
@@ -43,7 +43,7 @@ class AddEntry extends Component {
   }
   decrement = (metric) => {
     this.setState((state) => {
-      const count = state[metric] - getMetricMetaInfo(metric).step
+      const count = state[metric] - getMetricMetaInfo(metric).step;
 
       return {
         ...state,
@@ -57,8 +57,9 @@ class AddEntry extends Component {
     }))
   }
   submit = () => {
-    const key = timeToString()
-    const entry = this.state
+    const key = timeToString();
+    //const entry = this.state
+    const entry = [this.state];
 
     // update Redux
     this.props.dispatch(addEntry({
@@ -88,7 +89,7 @@ class AddEntry extends Component {
     removeEntry(key)
   }
   render() {
-    const metaInfo = getMetricMetaInfo()
+    const metaInfo = getMetricMetaInfo();
 
     if (this.props.alreadyLogged) {
       return (
@@ -107,7 +108,7 @@ class AddEntry extends Component {
 
     return (
       <View style={styles.container}>
-        <DateHeader date={(new Date()).toLocaleDateString()} />
+        //<DateHeader date={(new Date()).toLocaleDateString()} />
         {Object.keys(metaInfo).map((key) => {
           const { getIcon, type, ...rest } = metaInfo[key]
           const value = this.state[key]
@@ -182,11 +183,12 @@ const styles = StyleSheet.create({
 })
 
 function mapStateToProps (state) {
-  const key = timeToString()
+  const key = timeToString();
 
   return {
-    alreadyLogged: state[key] && typeof state[key].today === 'undefined'
+    //alreadyLogged: state[key] && typeof state[key].today === 'undefined'
+    alreadyLogged: state[key].length && typeof state[key][0].today === 'undefined'
   }
 }
 
-export default connect(mapStateToProps)(AddEntry)
+export default connect(mapStateToProps)(AddEntry);
