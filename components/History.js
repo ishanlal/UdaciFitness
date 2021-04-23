@@ -6,15 +6,10 @@ import { timeToString, getDailyReminderValue } from '../utils/helpers'
 import { fetchCalendarResults } from '../utils/api'
 import { Agenda as UdaciFitnessCalendar } from 'react-native-calendars'
 import {white} from '../utils/colors'
-//import DateHeader from './DateHeader'
 import MetricCard from './MetricCard'
-//import { AppLoading } from 'expo'
-import { AppLoading } from 'expo'
+import AppLoading from 'expo-app-loading'
 
 class History extends Component {
-  /*state = {
-    ready: false,
-  }*/
   state = {
     ready: false,
     selectedDate: new Date().toISOString().slice(0,10)
@@ -35,27 +30,22 @@ class History extends Component {
       ready: true
     })))
   }
-  //renderItem = ({today, ...metrics}, formattedDate, key) => (
   renderItem = (dateKey, {today, ...metrics}, firstItemInDay) => (
     <View style={styles.item}>
       {today
         ? <View>
-            //<DateHeader date={formattedDate}/>
             <Text style={styles.noDataText}>
               {today}
             </Text>
           </View>
         : <TouchableOpacity onPress={() => console.log('Pressed!')}>
-            //<MetricCard metrics={metrics} date={formattedDate} />
             <MetricCard metrics={metrics} />
           </TouchableOpacity>}
     </View>
   )
-  //renderEmptyDate(formattedDate) {
   renderEmptyDate() {
     return (
       <View style={styles.item}>
-        //<DateHeader date={formattedDate} />
         <Text style={styles.noDataText}>
           You didn't log any data on this day.
         </Text>
@@ -70,20 +60,12 @@ class History extends Component {
       };
 
     render() {
-      const { entries } = this.props;
-      //const { ready } = this.state
-      const { ready, selectedDate } = this.state;
-
+      const { entries } = this.props
+      const { ready, selectedDate } = this.state
       if (ready === false) {
-        return <AppLoading />
+          return <AppLoading />
       }
-
       return (
-          {/*<UdaciFitnessCalendar
-            items={entries}
-            renderItem={this.renderItem}
-            renderEmptyDate={this.renderEmptyDate}
-           />*/}
            <UdaciFitnessCalendar
               items={entries}
               onDayPress={this.onDayPress}
@@ -120,8 +102,8 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (entries) {
   return {
-    entries,
+    entries
   }
 }
 
-export default connect(mapStateToProps)(History);
+export default connect(mapStateToProps)(History)

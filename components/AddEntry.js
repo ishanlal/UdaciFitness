@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity, Platform, StyleSheet } from 'react-native
 import { getMetricMetaInfo, timeToString, getDailyReminderValue } from '../utils/helpers'
 import UdaciSlider from './UdaciSlider'
 import UdaciSteppers from './UdaciSteppers'
-//import DateHeader from './DateHeader'
 import { Ionicons } from '@expo/vector-icons'
 import TextButton from './TextButton'
 import { submitEntry, removeEntry } from '../utils/api'
@@ -58,7 +57,6 @@ class AddEntry extends Component {
   }
   submit = () => {
     const key = timeToString();
-    //const entry = this.state
     const entry = [this.state];
 
     // update Redux
@@ -108,7 +106,6 @@ class AddEntry extends Component {
 
     return (
       <View style={styles.container}>
-        //<DateHeader date={(new Date()).toLocaleDateString()} />
         {Object.keys(metaInfo).map((key) => {
           const { getIcon, type, ...rest } = metaInfo[key]
           const value = this.state[key]
@@ -186,8 +183,8 @@ function mapStateToProps (state) {
   const key = timeToString();
 
   return {
-    //alreadyLogged: state[key] && typeof state[key].today === 'undefined'
-    alreadyLogged: state[key].length && typeof state[key][0].today === 'undefined'
+    alreadyLogged: state[key] && typeof state[key].today === 'undefined'
+    //alreadyLogged: state[key].length && typeof state[key][0].today === 'undefined'
   }
 }
 
