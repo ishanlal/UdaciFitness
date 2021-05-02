@@ -9,7 +9,8 @@ import { submitEntry, removeEntry } from '../utils/api'
 import { connect } from 'react-redux'
 import { addEntry } from '../actions'
 import { white, purple } from '../utils/colors'
-import { NavigationActions } from 'react-navigation'
+//import { NavigationActions } from 'react-navigation'
+import { CommonActions } from '@react-navigation/native';
 
 function SubmitBtn ({ onPress }) {
   return (
@@ -96,12 +97,17 @@ class AddEntry extends Component {
     // update 'DB'
     removeEntry(key)
   }
-  toHome = () => {
+  /*toHome = () => {
     this.props.navigation.dispatch(NavigationActions.back({
       key: 'AddEntry'
     }))
+  }*/
+  toHome = () => {
+    this.props.navigation.dispatch({
+      ...CommonActions.goBack(),
+      source: 'AddEntry'
+    })
   }
-
   render() {
     const metaInfo = getMetricMetaInfo();
 
@@ -199,8 +205,8 @@ function mapStateToProps (state) {
   const key = timeToString();
 
   return {
-    alreadyLogged: state[key] && typeof state[key].today === 'undefined'
-    //alreadyLogged: state[key].length && typeof state[key][0].today === 'undefined'
+    //alreadyLogged: state[key] && typeof state[key].today === 'undefined'
+    alreadyLogged: state[key].length && typeof state[key][0].today === 'undefined'
   }
 }
 

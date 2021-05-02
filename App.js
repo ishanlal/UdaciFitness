@@ -34,8 +34,7 @@ function Tabs() {
               return <FontAwesome name='plus-square' size={30} color={color} />
             }
           },
-        })
-      }
+        })}
       tabBarOptions={{
         activeTintColor: Platform.OS === 'ios' ? purple : white,
         style: {
@@ -132,6 +131,6 @@ export default class App extends React.Component {
           </View>
         </NavigationContainer>
       </Provider>
-    );
+    )
   }
 }

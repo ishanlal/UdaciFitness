@@ -5,7 +5,7 @@ import { receiveEntries, addEntry } from '../actions'
 import { timeToString, getDailyReminderValue } from '../utils/helpers'
 import { fetchCalendarResults } from '../utils/api'
 import { Agenda as UdaciFitnessCalendar } from 'react-native-calendars'
-import {white} from '../utils/colors'
+import { white } from '../utils/colors'
 import MetricCard from './MetricCard'
 import AppLoading from 'expo-app-loading'
 
@@ -19,7 +19,7 @@ class History extends Component {
 
     fetchCalendarResults()
     .then((entries) => dispatch(receiveEntries(entries)))
-    .then(({entries}) => {
+    .then(({ entries }) => {
       if (!entries[timeToString()]) {
         dispatch(addEntry({
           [timeToString()]: getDailyReminderValue()
@@ -40,7 +40,7 @@ class History extends Component {
           </View>
         : <TouchableOpacity onPress={() => this.props.navigation.navigate(
           'EntryDetail',
-          {entryId: key}
+          {entryId: dateKey}
         )}>
             <MetricCard metrics={metrics} />
           </TouchableOpacity>}
@@ -63,8 +63,8 @@ class History extends Component {
       };
 
     render() {
-      const { entries } = this.props
-      const { ready, selectedDate } = this.state
+      const { entries } = this.props;
+      const { ready, selectedDate } = this.state;
       if (ready === false) {
           return <AppLoading />
       }
@@ -73,8 +73,7 @@ class History extends Component {
               items={entries}
               onDayPress={this.onDayPress}
               renderItem={(item, firstItemInDay) => this.renderItem(selectedDate, item, firstItemInDay)}
-              renderEmptyDate={this.renderEmptyDate}
-                  />
+              renderEmptyDate={this.renderEmptyDate} />
       )
     }
 }
@@ -109,4 +108,4 @@ function mapStateToProps (entries) {
   }
 }
 
-export default connect(mapStateToProps)(History)
+export default connect(mapStateToProps)(History);

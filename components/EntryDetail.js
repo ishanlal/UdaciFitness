@@ -9,7 +9,7 @@ import {timeToString, getDailyReminderValue} from '../utils/helpers';
 import TextButton from './TextButton';
 
 class EntryDetail extends Component {
-  static navigationOptions = ({ navigation }) => {
+  /*static navigationOptions = ({ navigation }) => {
     const { entryId } = navigation.state.params
 
     const year = entryId.slice(0,4)
@@ -19,7 +19,8 @@ class EntryDetail extends Component {
     return {
       title: `${month}/${day}/${year}`
     }
-  }
+  }*/
+
   reset = () => {
     const { remove, goBack, entryID } = this.props;
 
@@ -32,7 +33,7 @@ class EntryDetail extends Component {
   }
   render () {
 
-    const { metrics } = this.props
+    const { metrics } = this.props;
 
     return (
       <View style={styles.container}>
@@ -53,8 +54,8 @@ const styles = StyleSheet.create({
   }
 })
 
-function mapStateToProps (state, {navigation}) {
-  const { entryID } = navigation.state.params
+function mapStateToProps (state, { route }) {
+  const { entryID } = route.params;
 
   return {
     entryID,
@@ -62,14 +63,14 @@ function mapStateToProps (state, {navigation}) {
   }
 }
 
-function mapDispatchToProps (dispatch, {navigation}) {
-  const { entryID } = navigation.state.params
+function mapDispatchToProps (dispatch, { navigation, route }) {
+  const { entryID } = route.params;
 
   return {
     remove: () => dispatch(addEntry({
       [entryID]: timeToString() === entryID
         ? getDailyReminderValue()
-        : null
+        : new Array()
     })),
     goBack: () => navigation.goBack()
   }
