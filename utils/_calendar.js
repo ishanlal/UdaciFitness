@@ -38,12 +38,13 @@ function setDummyData () {
 
   AsyncStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(dummyData))
 
-  //console.log('setDummyData->data: ', dummyData)
+  console.log('setDummyData->data: ', dummyData)
   return dummyData
 }
 
 function setMissingDates (dates) {
   console.log('setMissingDates called!!!')
+  //console.log('setMissingDates->dates input: ', dates)
   const length = Object.keys(dates).length
   const timestamp = Date.now()
 
@@ -53,16 +54,17 @@ function setMissingDates (dates) {
     //console.log('setMissingDates->timeToString: ', strTime)
     if (typeof dates[strTime] === 'undefined') {
       //dates[strTime] = null
-      dates[strTime] = getDailyReminderValue()
+      dates[strTime] = new Array()
     }
   }
-  //console.log('setMissingDates->dates: ', dates)
+  //console.log('setMissingDates->dates out: ', dates)
   return dates
 }
 
 export function formatCalendarResults (results) {
   console.log('format calendar called!!!')
-  console.log('AsyncStorage data: ', JSON.parse(results))
+  console.log('true/false: ', results === null)
+  //console.log('AsyncStorage data: ', JSON.parse(results))
   return results === null
     ? setDummyData()
     : setMissingDates(JSON.parse(results))
