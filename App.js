@@ -129,6 +129,17 @@ export default class App extends React.Component {
               <Stack.Screen
                 name="Home"
                 component={Tabs} />
+              <Stack.Screen
+                  name="EntryDetail"
+                  component={EntryDetail}
+                  options={({ route }) => ({
+                    headerTintColor: white,
+                    headerStyle: {
+                      backgroundColor: purple
+                    },
+                    title: route.params.entryId,
+                    headerTitle: props => <Title {...props} />
+                  })} />
             </Stack.Navigator>
           </View>
         </NavigationContainer>

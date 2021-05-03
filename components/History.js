@@ -15,7 +15,6 @@ class History extends Component {
     selectedDate: new Date().toISOString().slice(0,10)
   }
   componentDidMount() {
-    console.log('inside componentDidMount')
     const { dispatch } = this.props
 
     fetchCalendarResults()
@@ -26,7 +25,6 @@ class History extends Component {
           [timeToString()]: getDailyReminderValue()
         }))
       }
-      console.log("inside .then()")
     })
     .then(() => this.setState(() => ({
       ready: true
@@ -42,8 +40,12 @@ class History extends Component {
           </View>
         : <TouchableOpacity onPress={() => this.props.navigation.navigate(
           'EntryDetail',
-          {entryId: dateKey}
+          {
+            screen: 'EntryDetail',
+            params: {entryId: dateKey},
+          }
         )}>
+        {console.log('DateKey: ', dateKey)}
             <MetricCard metrics={metrics} />
           </TouchableOpacity>}
     </View>
@@ -105,7 +107,6 @@ const styles = StyleSheet.create({
 })
 
 function mapStateToProps (entries) {
-  //console.log('entries', entries)
   return {
     entries
   }

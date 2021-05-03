@@ -36,6 +36,7 @@ class EntryDetail extends Component {
   render () {
 
     const { metrics } = this.props;
+    console.log('EntryDetail metrics: ', metrics)
 
     return (
       <View style={styles.container}>
@@ -57,10 +58,10 @@ const styles = StyleSheet.create({
 })
 
 function mapStateToProps (state, { route }) {
-  const { entryID } = route.params;
-
+  const { entryId } = route.params;
+  console.log('mapStateToProps: ', state[entryId])
   return {
-    metrics: state[entryID]
+    metrics: state[entryId]
   }
 }
 
