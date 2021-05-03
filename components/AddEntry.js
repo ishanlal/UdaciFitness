@@ -81,6 +81,7 @@ class AddEntry extends Component {
     submitEntry({key, entry})
 
     // Clear local notification
+    console.log('ClickED!!!!')
   }
   reset = () => {
 

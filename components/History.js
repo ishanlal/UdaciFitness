@@ -15,6 +15,7 @@ class History extends Component {
     selectedDate: new Date().toISOString().slice(0,10)
   }
   componentDidMount() {
+    console.log('inside componentDidMount')
     const { dispatch } = this.props
 
     fetchCalendarResults()
@@ -25,6 +26,7 @@ class History extends Component {
           [timeToString()]: getDailyReminderValue()
         }))
       }
+      console.log("inside .then()")
     })
     .then(() => this.setState(() => ({
       ready: true
@@ -103,6 +105,7 @@ const styles = StyleSheet.create({
 })
 
 function mapStateToProps (entries) {
+  //console.log('entries', entries)
   return {
     entries
   }

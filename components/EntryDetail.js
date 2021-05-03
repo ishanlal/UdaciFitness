@@ -29,7 +29,9 @@ class EntryDetail extends Component {
     removeEntry(entryID);
   }
   shouldComponentUpdate (nextProps) {
-    return nextProps.metrics !== null && !nextProps.metrics.today
+    const metrics = nextProps.metrics;
+    return metrics.length && !metrics[0].today
+    //return nextProps.metrics !== null && !nextProps.metrics.today
   }
   render () {
 
@@ -58,7 +60,6 @@ function mapStateToProps (state, { route }) {
   const { entryID } = route.params;
 
   return {
-    entryID,
     metrics: state[entryID]
   }
 }

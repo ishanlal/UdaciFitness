@@ -1,16 +1,18 @@
-import React from 'react'
-import { View, Text, Platform, StatusBar } from 'react-native'
-import AddEntry from './components/AddEntry'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import reducer from './reducers'
-import History from './components/History'
-import { purple, white } from './utils/colors'
-import { FontAwesome, Ionicons } from '@expo/vector-icons'
-import Constants from 'expo-constants'
-import { NavigationContainer } from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { createStackNavigator } from '@react-navigation/stack'
+import React from 'react';
+import { View, Text, Platform, StatusBar } from 'react-native';
+import AddEntry from './components/AddEntry';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './reducers';
+import History from './components/History';
+import { purple, white } from './utils/colors';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import Constants from 'expo-constants';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import Title from './components/Title';
+import EntryDetail from './components/EntryDetail';
 
 function UdaciStatusBar ({backgroundColor, ...props}){
     return (
