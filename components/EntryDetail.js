@@ -22,11 +22,11 @@ class EntryDetail extends Component {
   }*/
 
   reset = () => {
-    const { remove, goBack, entryID } = this.props;
+    const { remove, goBack, entryId } = this.props;
 
     remove();
     goBack();
-    removeEntry(entryID);
+    removeEntry(entryId);
   }
   shouldComponentUpdate (nextProps) {
     const metrics = nextProps.metrics;
@@ -36,11 +36,10 @@ class EntryDetail extends Component {
   render () {
 
     const { metrics } = this.props;
-    console.log('EntryDetail metrics: ', metrics)
 
     return (
       <View style={styles.container}>
-        <MetricCard metrics={metrics} />
+        <MetricCard metrics={metrics[0]} />
         <TextButton onPress={this.reset} style={{margin: 20}}>
           RESET
         </TextButton>
@@ -59,18 +58,16 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state, { route }) {
   const { entryId } = route.params;
-  console.log('mapStateToProps: ', state[entryId])
   return {
     metrics: state[entryId]
   }
 }
 
 function mapDispatchToProps (dispatch, { navigation, route }) {
-  const { entryID } = route.params;
-
+  const { entryId } = route.params;
   return {
     remove: () => dispatch(addEntry({
-      [entryID]: timeToString() === entryID
+      [entryId]: timeToString() === entryId
         ? getDailyReminderValue()
         : new Array()
     })),
