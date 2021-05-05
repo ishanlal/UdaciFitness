@@ -3,8 +3,6 @@
 * App demonstrates React Native.
 
 # Screenshots
-|![Home Screen Screenshot](./homeScreen.png "Home Screen")|
-|![Calendar History Screenshot](./calendarHistoryView.png "Calendar History View")|
-|![Entry Detail Screenshot](./entryDetail.png "Entry Detail")|
-|![Add Entry Screenshot](./addEntry.png "Add Entry")|
-|![Live Screenshot](./live.png "Live")|
+| ![Home Screen Screenshot](./homeScreen.png "Home Screen") | ![Calendar History Screenshot](./calendarHistoryView.png "Calendar History View") |
+| ![Entry Detail Screenshot](./entryDetail.png "Entry Detail") | ![Add Entry Screenshot](./addEntry.png "Add Entry") |
+| ![Live Screenshot](./live.png "Live") | 
