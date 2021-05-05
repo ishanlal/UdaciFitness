@@ -1,11 +1,10 @@
 {
   "expo": {
-    "sdkVersion": "38.0.0",
-    "orientation": "portrait",
+    "sdkVersion": "41.0.0",
     "name": "UdaciFitness",
     "description": "The best triathlon tracker ever",
     "version": "1.0.0",
-    "icon": "https://tylermcginnis.com/udacifitness-512.png",
+    "icon": "https://maxcdn.icons8.com/Color/PNG/512/Sports/triathlon-512.png",
     "slug": "udacifitness",
     "notification": {
        "icon": "https://tylermcginnis.com/udacifitness-45.png"
