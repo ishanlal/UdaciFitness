@@ -3,10 +3,8 @@
 * App demonstrates React Native.
 
 # Screenshots
-
-<img src='./homeScreen.png' height='50%' width='50%' />
-<img src='./calendarHistoryView.png' height='50%' width='50%' />
-
-| ![Home Screen Screenshot](./homeScreen.png "Home Screen") | ![Calendar History Screenshot](./calendarHistoryView.png "Calendar History View") |
-| ![Entry Detail Screenshot](./entryDetail.png "Entry Detail") | ![Add Entry Screenshot](./addEntry.png "Add Entry") |
-| ![Live Screenshot](./live.png "Live") |
+<img src='./homeScreen.png' height='50%' width='50%' alt='Home Screen Screenshot' />
+<img src='./calendarHistoryView.png' height='50%' width='50%' alt='Calendar History Screenshot' />
+<img src='./entryDetail.png' height='50%' width='50%' alt='Entry Detail Screenshot' />
+<img src='./addEntry.png' height='50%' width='50%' alt='Add Entry Screenshot' />
+<img src='./live.png' height='50%' width='50%' alt='Live Screenshot' />
