@@ -1,12 +1,21 @@
 {
-  "name": "UdaciFitness",
-  "displayName": "UdaciFitness",
   "expo": {
+    "orientation": "portrait",
     "name": "UdaciFitness",
-    "slug": "UdaciFitness",
+    "description": "The best triathlon tracker ever",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "icon": "https://tylermcginnis.com/udacifitness-512.png",
+    "slug": "udacifitness",
+    "notification": {
+       "icon": "https://tylermcginnis.com/udacifitness-45.png"
+    },
+    "ios": {
+         "bundleIdentifier": "org.udacifitness.exp",
+         "buildNumber": "1.0.0"
+       },
+    "android": {
+         "package": "org.udacifitness.exp",
+         "versionCode": 1
+       }
   }
 }

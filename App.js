@@ -13,6 +13,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import Title from './components/Title';
 import EntryDetail from './components/EntryDetail';
+import Live from './components/Live'
+import { setLocalNotification } from './utils/helpers'
 
 function UdaciStatusBar ({backgroundColor, ...props}){
     return (
@@ -34,7 +36,9 @@ function Tabs() {
               return <Ionicons name='ios-bookmarks' size={30} color={color} />
             } else if (route.name === 'AddEntry') {
               return <FontAwesome name='plus-square' size={30} color={color} />
-            }
+            } else if (route.name === 'Live') {
+            return <Ionicons name='ios-speedometer' size={30} color={color} />
+          }
           },
         })}
       tabBarOptions={{
@@ -59,6 +63,10 @@ function Tabs() {
         name="AddEntry"
         component={AddEntry}
         options={{ headerShown: false }} />
+      <Tab.Screen
+          name="Live"
+          component={Live}
+          options={{ headerShown: false }} />
     </Tab.Navigator>
   )
 }
@@ -119,6 +127,9 @@ const MainNavigator = StackNavigator({
 */
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
   render () {
     return (
       <Provider store={createStore(reducer)}>
