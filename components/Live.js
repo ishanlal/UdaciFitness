@@ -3,7 +3,7 @@ import { View, Text, ActivityIndicator, TouchableOpacity, StyleSheet, Animated }
 import { Foundation } from '@expo/vector-icons';
 import { purple, white } from '../utils/colors';
 import * as Location from 'expo-location';
-//import * as Permissions from 'expo-permissions';
+import * as Permissions from 'expo-permissions';
 import { calculateDirection } from '../utils/helpers';
 
 export default class Live extends Component {
@@ -19,8 +19,8 @@ export default class Live extends Component {
    }
 
   askPermission = () => {
-    //Permissions.askAsync(Permissions.LOCATION)
-    Location.requestForegroundPermissionsAsync()
+    Permissions.askAsync(Permissions.LOCATION)
+    //Location.requestForegroundPermissionsAsync()
     .then(({ status }) => {
       if (status === 'granted') {
         return this.setLocation()
